@@ -50,18 +50,20 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         try {
             if (mLocationPermissionGranted) {
-                Task location = mFusedLocationProviderClient.getLastLocation();
-                location.addOnCompleteListener(new OnCompleteListener() {
+                Task<Location> location = mFusedLocationProviderClient.getLastLocation();
+                location.addOnCompleteListener(new OnCompleteListener<Location>() {
                     @Override
                     public void onComplete(@NonNull Task task) {
                         if (task.isSuccessful() && task.getResult()!=null) {
                             Log.d(TAG, "onComplete: found location");
                             Location currentLocation = (Location) task.getResult();
-                            LatLng latLng = new LatLng((currentLocation.getLatitude()), currentLocation.getLongitude());
+                            LatLng latLng = new LatLng(36.8485,174.7633);
                             moveCamera(latLng, DEFAULT_ZOOM);
                         } else {
                             Log.d(TAG, "onComplete: could not get current location");
                             Toast.makeText(MapActivity.this, "unable to get location", Toast.LENGTH_LONG).show();
+                            LatLng latLng = new LatLng(-36.8485,174.7633);
+                            moveCamera(latLng, DEFAULT_ZOOM);
                         }
                     }
                 });
