@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Beacon_Pre-Alpha</string>
     <string name="maps_API_key">AIzaSyCy4ANWL6Ll2KgogcvfekMW0hHXahAELVw</string>
+    <string name="BeaconFound">Found Beacon</string>
+    <string name="BeaconNotFound">Unfound Found Beacon</string>
 </resources>
